@@ -2,6 +2,10 @@
 
 An interactive data visualization project for exploring Vietnam's administrative geography, including commune-level shape analysis, population centers, and capital city comparisons.
 
+## Demo
+
+You can view the the figures generated in my personal Google Drive folder here: https://drive.google.com/drive/u/0/folders/1AEbBzVlu_C8X_0JT9xrDlI-BPmfi64F8
+
 ## 📊 Features
 
 - **Shape Circularity Analysis**: Calculate and visualize the "circleness" of commune boundaries, identifying the most and least circular shapes
@@ -54,6 +58,7 @@ pip install -r requirements.txt
 Ensure the following files exist in `data/raw/`:
 - `vn_phuong_xa_34.geojson` (Commune boundaries with population data)
 - `vn_tinh_thanh_34.geojson` (Province boundaries)
+
 You can download these data at https://gis.vn/ban-do-hanh-chinh-viet-nam
 
 ## 📖 Usage
@@ -181,57 +186,6 @@ circleness = (4 * π * area) / (perimeter²)
 2. Weight centroid coordinates by commune population
 3. Aggregate by province: `(Σ(population × x) / Σ(population), Σ(population × y) / Σ(population))`
 4. Result is population-weighted center of mass
-
-## 🐛 Troubleshooting
-
-### "No module named 'src'"
-```bash
-# Run scripts from project root directory
-cd /path/to/geography-project
-python scripts/script_name.py
-```
-
-### Missing provinces in output
-- Verify `thu_phu` flag is properly set in commune data
-- Check province-capital CSV for correct name matching
-
-### Map shows blank/white screen
-- Ensure GeoJSON files have valid geometries
-- Check that CRS conversion to EPSG:4326 succeeded
-- Verify data contains the expected province names
-
-### Shapes appear as triangles
-- Remove or reduce simplification tolerance (set to 0)
-- Check original geometry vertex count
-
-## 📝 Dependencies
-
-- **geopandas** ≥ 0.14.0: Spatial data handling
-- **pandas** ≥ 2.0.0: Data manipulation
-- **numpy** ≥ 1.24.0: Numerical operations
-- **matplotlib** ≥ 3.7.0: Static visualizations
-- **shapely** ≥ 2.0.0: Geometric operations
-- **plotly** ≥ 5.0.0: Interactive maps
-- **mpld3** ≥ 0.5.0: Matplotlib to HTML export
-
-## 🔄 Workflow Example
-
-Complete pipeline to generate all visualizations:
-
-```bash
-# 1. Generate capital mapping
-python scripts/generate_capital_csv.py
-
-# 2. Generate shape circularity comparison
-python scripts/generate_circleness_html.py
-
-# 3. Generate population center map
-python scripts/generate_capital_population_map.py
-
-# 4. Open outputs in browser
-open output/province_circleness.html
-open output/capitals_vs_population_centers.html
-```
 
 ## 📄 License
 
