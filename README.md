@@ -54,6 +54,7 @@ pip install -r requirements.txt
 Ensure the following files exist in `data/raw/`:
 - `vn_phuong_xa_34.geojson` (Commune boundaries with population data)
 - `vn_tinh_thanh_34.geojson` (Province boundaries)
+You can download these data at https://gis.vn/ban-do-hanh-chinh-viet-nam
 
 ## 📖 Usage
 
